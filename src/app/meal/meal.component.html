@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width-device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <div class="card">
+    <div class="images">
+        <img [src]="meal.strMealThumb" alt= "" />
+    </div>
+    <div class="information">
+        <h3> Meal: {{ meal.strMeal }}</h3>
+        <h3> Category: {{ meal.strCategory }}</h3>
+        <h3> Location: {{ meal.strArea }}</h3>
+        <h4>
+            Instructions: {{meal.strInstructions | slice: 0:maxInstruction }}
+            <button
+            (click)="
+            maxInstruction == 100 ? (maxInstruction = meal.strInstructions.length) : (maxInstruction = 100)"> 
+            Read {{ maxInstruction == 100 ? "More" : "Less"}}
+        </button>
+        </h4>
+        <h4>
+            Ingredients: 
+            <button (click) ="maxIngredients == 0 ? (maxIngredients = ingredientList.length) : (maxIngredients = 0)">
+                {{ maxIngredients == 0 ? "Show" : "Hide" }}
+            </button>
+            <h4 *ngFor = "let i of ingredientList | slice: 0 : maxIngredients">
+                {{ i.item }} - {{i.quantity }}
+            </h4>
+        </h4>
+        <h4>
+            Source: <a href="{{ meal.strYoutube }}" target ="_blank">Click here to watch receipe video</a>
+        </h4>
+
+    </div>
+</div>
+</body>
+
+</html>

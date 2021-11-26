@@ -1,0 +1,13 @@
+<div class="app-container">
+    <div class="text-center">
+        <h2>Meals Menu</h2>
+        <div class="search">
+            <input type="text" placeholder="Enter the Meal Name" [(ngModel)]="searchMeal"/>
+            <button type="submit" (click)="getMealByName()" >Search</button>
+        </div>
+    </div>
+
+    <div *ngIf="mealsList$ | async">
+        <app-meal *ngFor="let meal of mealsList" [meal]="meal"></app-meal>
+    </div>
+</div>
